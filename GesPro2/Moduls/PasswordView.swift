@@ -8,10 +8,67 @@
 import SwiftUI
 
 struct PasswordView: View {
+    @State private var email: String = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            VStack {
+                Text("Recuperar Contraseña")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.bottom, 10)
+                
+                VStack {
+                    Spacer()
+                    VStack(spacing: 20) {
+                        TextField("Email", text: $email)
+                            .padding()
+                            .background(Color(.systemGray6))
+                            .cornerRadius(10)
+                            .padding(.horizontal, 40)
+                        
+                        Button(action: {
+                            // Acción para enviar el correo de recuperación
+                        }) {
+                            Text("Enviar")
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.blue)
+                                .cornerRadius(10)
+                                .padding(.horizontal, 40)
+                        }
+                    }
+                    Spacer()
+                    LogoFondoView()
+                        .padding(.bottom) // Ajusta el padding según sea necesario
+                }
+            }
+        }
     }
 }
+
+
+struct ContentView2: View {
+    var body: some View {
+        NavigationView {
+            VStack {
+                NavigationLink(destination: LoginView()) {
+                    Text("Iniciar Sesión")
+                }
+                NavigationLink(destination: RegisterView()) {
+                    Text("Registrarse")
+                }
+                NavigationLink(destination: PasswordView()) {
+                    Text("Recuperar Contraseña")
+                }
+            }
+        }
+    }
+}
+
+
+
 
 #Preview {
     PasswordView()

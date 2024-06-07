@@ -12,6 +12,8 @@ struct LoginView: View {
     @State private var password: String = ""
     @State private var isRegistering = false // Estado para controlar la navegación
     @State private var isPasswordVisible: Bool = false
+    @State private var isRecoveringPassword = false // Nuevo estado para navegación a PasswordView
+
     
     var body: some View {
         NavigationView {
@@ -81,8 +83,18 @@ struct LoginView: View {
                                     .padding(.horizontal, 40)
                             }
                             
+                            NavigationLink(destination: RegisterView(), isActive: $isRegistering) {
+                                EmptyView()
+                            }
+                            NavigationLink(destination: PasswordView(), isActive: $isRecoveringPassword) {
+                                EmptyView()
+                            }
+                            
+                            
                             Button(action: {
                                 // Acción para recuperar contraseña
+                                isRecoveringPassword = true
+
                             }) {
                                 Text("Recuperar Contraseña")
                                     .foregroundColor(.blue)

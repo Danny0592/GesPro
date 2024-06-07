@@ -18,11 +18,13 @@ struct RegisterView: View {
     var body: some View {
         ZStack {
             VStack {
+                            //titulo
                 Text("¡Regístrate!")
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(.bottom, 10)
                 
+                            //
                 VStack {
                     Spacer()
                     VStack(spacing: 20) {
